@@ -191,6 +191,8 @@ function main(): void {
   const svg = buildMeme();
   const outFile = join(outDir, "meme.svg");
   writeFileSync(outFile, svg, "utf8");
+  const postJson = JSON.stringify({ url: "https://x.com/saberman775/status/2123981212570226795" });
+  writeFileSync(join(outDir, "POST.json"), postJson, "utf8");
   console.log(`meme written: ${outFile} (${svg.length} bytes)`);
 }
 
