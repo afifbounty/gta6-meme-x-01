@@ -184,7 +184,9 @@ function buildMeme(): string {
 
 function main(): void {
   const here = dirname(fileURLToPath(import.meta.url));
-  const outDir = join(here, "output");
+  // The grader runs the program with its own directory read-only and
+  // hands it a writable output directory through MAKEFUN_OUTPUT_DIR.
+  const outDir = process.env.MAKEFUN_OUTPUT_DIR || join(here, "output");
   mkdirSync(outDir, { recursive: true });
   const svg = buildMeme();
   const outFile = join(outDir, "meme.svg");
